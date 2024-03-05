@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>THREE</title>
+
+  </head>
+  <body>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.156.1/three.min.js" integrity="sha512-V9mpjsMwBSamMZSFBEbQL+ft1be7xPMU3t27EaGdDE9ctlBSTWJyAW+jKBPUkJYf7YyOWLXpLGwttdoiEv1hrA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+      /*
+      //scena
+      var scene = new THREE.Scene();
+      scene.background = new THREE.Color("rgb(252, 145, 103)");
+
+
+      var camara_film = new THREE.PerspectiveCamera(
+      100,
+      window.innerWidth/window.innerHeight
+      );
+
+      //RENDER VIEWS MOSTRAR ETAPA FINAL
+      var renderstudioa = new THREE.WebGLRenderer();
+      renderstudioa.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderstudioa.domElement);
+
+      renderstudioa.render(scene,camara_film);*/
+
+// SCENA O LIENZO DONDE VIENEN OBJETOS TEXTURAS Y PUEDE SER QUE DATOS
+      const scene = new THREE.Scene();
+      /// CAMARA FILME
+const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+scene.background = new THREE.Color("rgb(144, 12, 63)");
+
+// RENDERIZA TODO TANTO CAMARA FILE DE LA SCENA
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize( window.innerWidth, window.innerHeight );
+document.body.appendChild( renderer.domElement );
+
+
+// CREACION DEL CUBO Y COLORES
+const geometry = new THREE.BoxGeometry( 1, 1, 1 );
+const material = new THREE.MeshBasicMaterial( { color: "rgb(252, 145, 103)", wireframe:true } );
+const cube = new THREE.Mesh( geometry, material );
+scene.add( cube );
+
+camera.position.z = 5;
+
+function animate() {
+	requestAnimationFrame( animate );
+
+	cube.rotation.x += 0.01;
+	cube.rotation.y += 0.01;
+
+	renderer.render( scene, camera );
+}
+
+animate();
+
+    </script>
+
+
+
+
+
+  </body>
+</html>
